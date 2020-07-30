@@ -1,18 +1,16 @@
-$(function () {
-    const loop = document.getElementById('loop_js');
-  
-    //タイムラインを作成
-    const loopAnim = new TimelineMax({
-      repeat: -1 //繰り返し無制限
-    });
-  
-    //画像を複製してdiv内に挿入
-    let loopItem = (window.innerWidth, loop.children[0]);
-    loop.appendChild(loopItem.cloneNode(true));
-    loop.appendChild(loopItem.cloneNode(true));
-  
-    //アニメーションの設定
-    loopAnim
-      .to(loop, 50, { ease: Power0.easeNone, xPercent: -66.66666 })
-      .to(loop, 0, { ease: Power0.easeNone, x: 0 });
-  });
+function set2fig(num) {
+    // 桁数が1桁だったら先頭に0を加えて2桁に調整する
+    var ret;
+    if( num < 10 ) { ret = "0" + num; }
+    else { ret = num; }
+    return ret;
+ }
+ function showClock2() {
+    var nowTime = new Date();
+    var nowHour = set2fig( nowTime.getHours() );
+    var nowMin  = set2fig( nowTime.getMinutes() );
+    var nowSec  = set2fig( nowTime.getSeconds() );
+    var msg = "現在時刻は、" + nowHour + ":" + nowMin + ":" + nowSec + " です。";
+    document.getElementById("RealtimeClockArea").innerHTML = msg;
+ }
+ setInterval('showClock2()',1000);

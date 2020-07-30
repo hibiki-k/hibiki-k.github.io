@@ -52,8 +52,36 @@ h1{
 }
 .loop_wrap{
 	float: left;
-	width: 200px;
+	display: flex;
+	width: 75%;
+	height: 100%;
+	overflow: hidden;
 }
 .loop_wrap img {
+	width: auto;
 	height: 878px;
 }
+@keyframes loop {
+	0% {
+	  transform: translateX(100%);
+	}
+	to {
+	  transform: translateX(-100%);
+	}
+  }
+  
+  @keyframes loop2 {
+	0% {
+	  transform: translateX(0);
+	}
+	to {
+	  transform: translateX(-200%);
+	}
+  }
+  .loop_wrap img:first-child {
+	animation: loop 50s -25s linear infinite;
+  }
+  
+  .loop_wrap img:last-child {
+	animation: loop2 50s linear infinite;
+  }
